@@ -75,6 +75,19 @@ function validate_required_input_with_options {
 	fi
 }
 
+function validate_same_number_of_values {
+  key1=$1
+  key2=$2
+  size1=$3
+  size2=$4
+  [ $size1 == $size2 ] || echo_fail "Invalid input: $key1 and $key2 must have the same number of values"
+}
+
+function trim_string {
+  result=`echo -n $1 | xargs`
+  echo $result
+}
+
 #=======================================
 # Main
 #=======================================
@@ -84,15 +97,20 @@ function validate_required_input_with_options {
 echo_info "Configs:"
 echo_details "* target: $target"
 echo_details "* configuration: $configuration"
-echo_details "* xcode_setting_key: $xcode_setting_key"
-echo_details "* target_variable: $target_variable"
-echo
+echo_details "* xcode_setting_keys: $xcode_setting_keys"
+echo_details "* new_values: $new_values"
 
 validate_required_input "xcode_project_path" $xcode_project_path
 validate_required_input "target" $target
 validate_required_input "configuration" $configuration
-validate_required_input "xcode_setting_key" $xcode_setting_key
-validate_required_input "target_variable" $target_variable
+validate_required_input "xcode_setting_keys" $xcode_setting_keys
+validate_required_input "new_values" $new_values
+
+IFS="|"
+keys=($xcode_setting_keys)
+values=($new_values)
+unset IFS
+validate_same_number_of_values "xcode_setting_keys" "new_values" ${#keys[@]} ${#values[@]}
 
 # this expansion is required for paths with ~
 #  more information: http://stackoverflow.com/questions/3963716/how-to-manually-expand-a-special-variable-ex-tilde-in-bash
@@ -104,20 +122,15 @@ fi
 
 echo_info "Installing required gem: xcodeproj_setting"
 gem install xcodeproj_setting
-# if [[ "$aws_region" != "" ]] ; then
-# 	echo_details "AWS region (${aws_region}) specified!"
-# 	export AWS_DEFAULT_REGION="${aws_region}"
-# fi
 
-value=`xcodeproj_setting --path $expanded_xcode_project_path \
-        --target $target \
-        --conf $configuration \
-        --key $xcode_setting_key \
-        --print`
+for (( i=0; i<${#keys[@]}; i++ )); do
+  key=$(trim_string ${keys[i]})
+  value=$(trim_string ${values[i]})
+  xcodeproj_setting --path $expanded_xcode_project_path \
+      --target $target \
+      --conf $configuration \
+      --key $key \
+      --value "$value"
 
-[ -z "$var" ] && echo_fail "No valid value found for key: '$xcode_setting_key'"
-
-echo_info "Found value of: $value"
-echo_info "Setting environment variable $target_variable to $value"
-envman add --key $target_variable --value $value
-
+  echo_info "Updated key '$key' to '$value'"
+done

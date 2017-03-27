@@ -1,11 +1,11 @@
-# Extract Xcode settings
-This step exports to an environment variable any project settings of an Xcode project.
+# Set Xcode settings
+This step allows to set Xcode project's settings.
 
 
 ## How to use this Step
 
 Can be run directly with the [bitrise CLI](https://github.com/bitrise-io/bitrise),
-just `git clone` this repository, `cd` into it's folder in your Terminal/Command Line
+just `git clone` this repository, `cd` into it's folder in your TQerminal/Command Line
 and call `bitrise run test`.
 
 *Check the `bitrise.yml` file for required inputs which have to be

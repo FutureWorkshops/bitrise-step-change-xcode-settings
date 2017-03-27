@@ -1,10 +1,8 @@
-title: "S3 Download"
-summary: This step allows to download a file from an S3 bucket.
-description: |-
-   This step allows to download a file from an S3 bucket using an Access/secret keypair
-   for authentication.
-website: https://github.com/FutureWorkshops/bitrise-step-s3-download
-source_code_url: https://github.com/FutureWorkshops/bitrise-step-s3-download
+title: "Set Xcode settings"
+summary: This step allows to set Xcode project settings
+description: '' 
+website: https://github.com/FutureWorkshops/bitrise-step-extract-xcode-setting
+source_code_url: https://github.com/FutureWorkshops/bitrise-step-extract-xcode-setting
 host_os_tags:
   - osx-10.10
   - osx-10.9
@@ -23,7 +21,7 @@ inputs:
     opts:
       title: "Xcodeproj path"
       summary: The path to the .xcodeproj file.
-      description: This is the AWS Access key of an user with read permission to the S3 bucket/file.
+      description: 
       is_expand: true
       is_required: true
       value_options: []
@@ -43,21 +41,21 @@ inputs:
       is_expand: true
       is_required: true
       value_options: []
-  - xcode_setting_key: ''
+  - xcode_setting_keys: ''
     opts:
-      title: "Setting name"
-      summary: The name of the project setting to extract. Case sensitive.
-      description: "The name of the project setting as defined in the project.pbxproj file (for example: PROJECT_BUNDLE_IDENTIFIER for the bundle ID)"
+      title: "Setting names"
+      summary: "A list of project settings to change, separated by |"
+      description:
       is_expand: true
       is_required: true
       value_options: []
-  - target_variable: 'XCODE_SETTING'
+  - new_values: ''
     opts:
-      title: "Target env variable"
-      summary: "Environment variable to set to the setting's value."
-      description:  "The name of the environment variable to set to the value of the setting specified by 'xcode_setting_key'"
+      title: "New values"
+      summary: "A list of values to set, separated by |"
+      description:
       is_expand: true
-      is_required: true
+      is_required: false
       value_options: []
 
 outputs:
