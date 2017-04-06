@@ -124,8 +124,8 @@ echo_info "Installing required gem: xcodeproj_setting"
 gem install xcodeproj_setting
 
 for (( i=0; i<${#keys[@]}; i++ )); do
-  key=$(trim_string ${keys[i]})
-  value=$(trim_string ${values[i]})
+  key=$(trim_string "${keys[i]}")
+  value=$(trim_string "${values[i]}")
   xcodeproj_setting --path $expanded_xcode_project_path \
       --target $target \
       --conf $configuration \

@@ -24,7 +24,7 @@ workflows:
         - target: Test
         - configuration: Release
         - xcode_setting_keys: PRODUCT_BUNDLE_IDENTIFIER | SWIFT_VERSION
-        - new_values: my.test | 3.1
+        - new_values: my test | 3.1
           
   # ----------------------------------------------------------------
   # --- workflows to Share this step into a Step Library
