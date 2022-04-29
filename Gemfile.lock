@@ -20,7 +20,7 @@ PLATFORMS
   x86_64-darwin-20
 
 DEPENDENCIES
-  xcodeproj
+  xcodeproj (~> 1.21)
 
 BUNDLED WITH
    2.3.10
