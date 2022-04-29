@@ -121,16 +121,16 @@ if [ ! -e "${expanded_xcode_project_path}/project.pbxproj" ]; then
 fi
 
 echo_info "Installing required gem: xcodeproj_setting"
-gem install xcodeproj_setting
+bundle exec gem install xcodeproj_setting
 
 for (( i=0; i<${#keys[@]}; i++ )); do
   key=$(trim_string "${keys[i]}")
   value=$(trim_string "${values[i]}")
-  xcodeproj_setting --path $expanded_xcode_project_path \
-      --target "$target" \
-      --conf $configuration \
-      --key $key \
-      --value "$value"
+  bundle exec xcodeproj_setting --path $expanded_xcode_project_path \
+	--target "$target" \
+	--conf $configuration \
+	--key $key \
+	--value "$value"
 
   echo_info "Updated key '$key' to '$value'"
 done
