@@ -24,7 +24,6 @@ inputs:
       description: 
       is_expand: true
       is_required: true
-      value_options: []
   - target: ''
     opts:
       title: "Target name"
@@ -32,7 +31,6 @@ inputs:
       description: "The name of the project's target."
       is_expand: true
       is_required: true
-      value_options: []
   - configuration: 'Release'
     opts:
       title: "Configuration name"
@@ -40,7 +38,6 @@ inputs:
       description: "The name of the project configuration: usually either Debug or Release."
       is_expand: true
       is_required: true
-      value_options: []
   - xcode_setting_keys: ''
     opts:
       title: "Setting names"
@@ -48,7 +45,6 @@ inputs:
       description:
       is_expand: true
       is_required: true
-      value_options: []
   - new_values: ''
     opts:
       title: "New values"
@@ -56,7 +52,6 @@ inputs:
       description:
       is_expand: true
       is_required: false
-      value_options: []
 
 outputs:
  
