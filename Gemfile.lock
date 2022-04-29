@@ -6,8 +6,6 @@ GEM
     atomos (0.1.3)
     claide (1.1.0)
     colored2 (3.1.2)
-    fw_xcodeproj_setting (1.2.0)
-      xcodeproj (~> 1.21.0, >= 1.21.0)
     nanaimo (0.3.0)
     rexml (3.2.5)
     xcodeproj (1.21.0)
@@ -22,7 +20,6 @@ PLATFORMS
   x86_64-darwin-20
 
 DEPENDENCIES
-  fw_xcodeproj_setting
   xcodeproj
 
 BUNDLED WITH
