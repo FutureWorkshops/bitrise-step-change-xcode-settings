@@ -126,11 +126,11 @@ bundle exec gem install xcodeproj
 for (( i=0; i<${#keys[@]}; i++ )); do
   key=$(trim_string "${keys[i]}")
   value=$(trim_string "${values[i]}")
-  bundle exec ruby "${THIS_SCRIPT_DIR}/xcodeproj_settings.rb" --path $expanded_xcode_project_path \
-	--target "$target" \
-	--conf $configuration \
-	--key $key \
-	--value "$value"
+  bundle exec ruby "${THIS_SCRIPT_DIR}/xcodeproj_settings.rb" "$expanded_xcode_project_path" \
+	"$target" \
+	"$configuration" \
+	"$key" \
+	"$value"
 
   echo_info "Updated key '$key' to '$value'"
 done
