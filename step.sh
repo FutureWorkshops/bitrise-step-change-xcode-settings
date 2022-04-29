@@ -120,15 +120,15 @@ if [ ! -e "${expanded_xcode_project_path}/project.pbxproj" ]; then
   echo_fail "No valid Xcode project found at path: ${expanded_xcode_project_path}"
 fi
 
-echo_info "Installing required gem: xcodeproj_setting"
+echo_info "Installing required gem: fw_xcodeproj_setting"
 RUN_COMMAND=""
 if [ -f Gemfile ]; then
 	bundle install
-	bundle exec gem install xcodeproj_setting
-	RUN_COMMAND="xcodeproj_setting"
+	bundle exec gem install fw_xcodeproj_setting
+	RUN_COMMAND="fw_xcodeproj_setting"
 else
-	gem install xcodeproj_setting
-	RUN_COMMAND="bundle exec xcodeproj_setting"
+	gem install fw_xcodeproj_setting
+	RUN_COMMAND="bundle exec fw_xcodeproj_setting"
 fi
 
 for (( i=0; i<${#keys[@]}; i++ )); do

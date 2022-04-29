@@ -1,4 +1,4 @@
 source "https://rubygems.org"
 
 gem 'xcodeproj'
-gem 'xcodeproj_setting'
+gem 'fw_xcodeproj_setting'
