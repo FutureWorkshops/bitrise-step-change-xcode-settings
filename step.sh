@@ -120,6 +120,8 @@ if [ ! -e "${expanded_xcode_project_path}/project.pbxproj" ]; then
   echo_fail "No valid Xcode project found at path: ${expanded_xcode_project_path}"
 fi
 
+echo_info "Preparing bundle environment"
+bundle
 echo_info "Installing required gem: xcodeproj"
 bundle exec gem install xcodeproj
 
